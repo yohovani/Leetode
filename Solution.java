@@ -38,10 +38,9 @@ class Result {
     public static List<Integer> minimalHeaviestSetA(List<Integer> arr) {
     // Write your code here
         Collections.sort(arr, Collections.reverseOrder());
-        System.out.println(arr);
         
-        int sumA = 0;
-        int sumB = 0;
+        long sumA = 0;
+        long sumB = 0;
         for(int a : arr){
             sumB += a;
         }
@@ -52,11 +51,14 @@ class Result {
         for(int a : arr){
             sumA += a;
             resultado.add(a);
-            if(sumA > sumB-sumA){
+            if(sumA > sumB-sumA ){
                 break;
             }
         }
         Collections.sort(resultado);
+        
+        System.out.println(resultado);
+        System.out.println(resultado.size());
         return resultado;
     }
 
