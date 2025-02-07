@@ -36,6 +36,8 @@
 #Explanation: Your function should return k = 5, with the first five elements of nums being 1, 1, 2, 2 and 3 respectively.
 #It does not matter what you leave beyond the returned k (hence they are underscores).
 
+
+from typing import List
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         actual = nums[0]

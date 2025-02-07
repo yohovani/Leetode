@@ -21,6 +21,8 @@
 #1 <= n <= 5 * 104
 #-109 <= nums[i] <= 109
 
+from typing import List
+
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
         nums_set = set(nums)

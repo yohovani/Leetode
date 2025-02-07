@@ -40,6 +40,7 @@
 #-109 <= nums1[i], nums2[j] <= 109
 
 
+from typing import List
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
