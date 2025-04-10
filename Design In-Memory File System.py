@@ -38,6 +38,6 @@ class FileSystem:
 
 fs = FileSystem()
 print(fs.ls("C:\\Users\\yohov\\Documents\\proyectos\\Leetode"))
-#fs.mkdir("C:\\Users\\yohov\\Documents\\yoho\\1\\2\\3\\4")
-#fs.addContentToFile("C:\\Users\\yohov\\Documents\\yoho\\1.txt","\nholoaasdasdasda")
+fs.mkdir("C:\\Users\\yohov\\Documents\\yoho\\1\\2\\3\\4")
+fs.addContentToFile("C:\\Users\\yohov\\Documents\\yoho\\s\\2.txt","\nholoaasdasdasda")
 print(fs.readContentFromFile("C:\\Users\\yohov\\Documents\\yoho\\1.txt"))
