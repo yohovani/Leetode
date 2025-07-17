@@ -28,8 +28,28 @@ public class ReconstructOriginalDigits {
             }
         }
 
+        public int foundOccurrence(String str, char c){
+            int occurrences = 0;
+            for(int i=0;i<str.length();i++){
+                if(str.charAt(i) == c){
+                    occurrences += 1;
+                }
+            }
+            return occurrences;
+        }
+
         public String originalDigits(String s) {
         ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(0);
+        numbers.add(0);
+        numbers.add(0);
+        numbers.add(0);
+        numbers.add(0);
+        numbers.add(0);
+        numbers.add(0);
+        numbers.add(0);
+        numbers.add(0);
+        numbers.add(0);
         //Z -> Search Zero
         //W -> Search Two
         //X -> Search Six
@@ -39,108 +59,76 @@ public class ReconstructOriginalDigits {
         //T -> Search Eight
         //O -> Search One
         //N -> Search Nine
-        String letter_filter = "zwxfusgton";
-        String number = "";
+        String letter_filter = "zowtufxsgn";//"zwxufsgton";
         String result = "";
-        while(s.length() > 0){
-            for(int i=0;i<letter_filter.length();i++){
-                int search = s.indexOf(letter_filter.charAt(i));
-                String aux = s;
-                if(search != -1){
-                    switch(letter_filter.charAt(i)){
-                        case 'z':{
-                            number = "zero";
-                            s = constructNumber(number,s);
-                            if(number.length() + s.length() == aux.length()){
-                                numbers.add(0);
-                            }
-                            break;
-                        }
-                        case 'w':{
-                            number = "two";
-                            s = constructNumber(number,s);
-                            if(number.length() + s.length() == aux.length()){
-                                numbers.add(2);
-                            }
-                            break;
-                        }
-                        case 'x':{
-                            number = "six";
-                            s = constructNumber(number,s);
-                            if(number.length() + s.length() == aux.length()){
-                                numbers.add(6);
-                            }
-                            break;
-                        }
-                        case 'f':{
-                            number = "five";
-                            s = constructNumber(number,s);
-                            if(number.length() + s.length() == aux.length()){
-                                numbers.add(5);
-                            }
-                            break;
-                        }
-                        case 'u':{
-                            number = "four";
-                            s = constructNumber(number,s);
-                            if(number.length() + s.length() == aux.length()){
-                                numbers.add(4);
-                            }
-                            break;
-                        }
-                        case 's':{
-                            number = "seven";
-                            s = constructNumber(number,s);
-                            if(number.length() + s.length() == aux.length()){
-                                numbers.add(7);
-                            }
-                            break;
-                        }
-                        case 't':{
-                            number = "three";
-                            s = constructNumber(number,s);
-                            if(number.length() + s.length() == aux.length()){
-                                numbers.add(3);
-                            }
-                            break;
-                        }
-                        case 'g':{
-                            number = "eight";
-                            s = constructNumber(number,s);
-                            if(number.length() + s.length() == aux.length()){
-                                numbers.add(8);
-                            }
-                            break;
-                        }
-                        case 'o':{
-                            number = "one";
-                            s = constructNumber(number,s);
-                            if(number.length() + s.length() == aux.length()){
-                                numbers.add(1);
-                            }
-                            break;
-                        }
-                        default:{
-                            number = "nine";
-                            s = constructNumber(number,s);
-                            if(number.length() + s.length() == aux.length()){
-                                numbers.add(9);
-                            }
-                            break;
-                        }
+
+        for(int i=0;i<letter_filter.length();i++){
+            int search = s.indexOf(letter_filter.charAt(i));
+            if(search != -1){
+                switch(letter_filter.charAt(i)){
+                    case 'z':{
+                        numbers.set(0, foundOccurrence(s,'z'));
+                        break;
+                    }
+                    case 'o':{
+                        numbers.set(1, foundOccurrence(s,'o'));
+                        break;
+                    }
+                    case 'w':{
+                        numbers.set(2, foundOccurrence(s,'w'));
+                        break;
+                    }
+                    case 't':{
+                        numbers.set(3, foundOccurrence(s,'t'));
+                        break;
+                    }
+                    case 'u':{
+                        numbers.set(4, foundOccurrence(s,'u'));
+                        break;
+                    }
+                    case 'f':{
+                        numbers.set(5, foundOccurrence(s,'f'));
+                        break;
+                    }
+                    case 'x':{
+                        numbers.set(6, foundOccurrence(s,'x'));
+                        break;
+                    }
+                    case 's':{
+                        numbers.set(7, foundOccurrence(s,'s'));
+                        break;
+                    }
+                    case 'g':{
+                        numbers.set(8, foundOccurrence(s,'g'));
+                        break;
+                    }
+                    case 'n':{
+                        numbers.set(9, foundOccurrence(s,'n'));
+                        break;
                     }
                 }
                 
             }
-
         }
 
-        Collections.sort(numbers);
-        System.out.println("s = "+s);
+        //Correccion del conteo
+        //1  
+        numbers.set(1, numbers.get(1) - (numbers.get(2)+numbers.get(4)+numbers.get(0)));
+        //3 
+        numbers.set(3,numbers.get(3) - (numbers.get(2) + numbers.get(8)));
+        //5
+        numbers.set(5,numbers.get(5) - numbers.get(4));
+        //7
+        numbers.set(7,numbers.get(7) - numbers.get(6));
+        //9
+        numbers.set(9,(numbers.get(9) - (numbers.get(1) + numbers.get(7)))/2);
+
+
         for(int i=0;i<numbers.size();i++){
-            result += numbers.get(i);
+            for(int j=0;j<numbers.get(i);j++){
+                result += i;    
+            }
         }
-
         return result;
     }
 }
