@@ -42,113 +42,104 @@ public class ReconstructOriginalDigits {
         String letter_filter = "zwxfusgton";
         String number = "";
         String result = "";
-        
-        for(int i=0;i<letter_filter.length();i++){
-            int search = s.indexOf(letter_filter.charAt(i));
-            String aux = s;
-            if(search != -1){
-                switch(letter_filter.charAt(i)){
-                    case 'z':{
-                        number = "zero";
-                        s = constructNumber(number,s);
-                        if(number.length() + s.length() == aux.length()){
-                            numbers.add(0);
+        while(s.length() > 0){
+            for(int i=0;i<letter_filter.length();i++){
+                int search = s.indexOf(letter_filter.charAt(i));
+                String aux = s;
+                if(search != -1){
+                    switch(letter_filter.charAt(i)){
+                        case 'z':{
+                            number = "zero";
+                            s = constructNumber(number,s);
+                            if(number.length() + s.length() == aux.length()){
+                                numbers.add(0);
+                            }
+                            break;
                         }
-                        System.out.println(s);
-                        break;
-                    }
-                    case 'w':{
-                        number = "two";
-                        s = constructNumber(number,s);
-                        if(number.length() + s.length() == aux.length()){
-                            numbers.add(2);
+                        case 'w':{
+                            number = "two";
+                            s = constructNumber(number,s);
+                            if(number.length() + s.length() == aux.length()){
+                                numbers.add(2);
+                            }
+                            break;
                         }
-                        System.out.println(s);
-                        break;
-                    }
-                    case 'x':{
-                        number = "six";
-                        s = constructNumber(number,s);
-                        if(number.length() + s.length() == aux.length()){
-                            numbers.add(6);
+                        case 'x':{
+                            number = "six";
+                            s = constructNumber(number,s);
+                            if(number.length() + s.length() == aux.length()){
+                                numbers.add(6);
+                            }
+                            break;
                         }
-                        System.out.println(s);
-                        break;
-                    }
-                    case 'f':{
-                        number = "five";
-                        s = constructNumber(number,s);
-                        if(number.length() + s.length() == aux.length()){
-                            numbers.add(5);
+                        case 'f':{
+                            number = "five";
+                            s = constructNumber(number,s);
+                            if(number.length() + s.length() == aux.length()){
+                                numbers.add(5);
+                            }
+                            break;
                         }
-                        System.out.println(s);
-                        break;
-                    }
-                    case 'u':{
-                        number = "four";
-                        s = constructNumber(number,s);
-                        if(number.length() + s.length() == aux.length()){
-                            numbers.add(4);
+                        case 'u':{
+                            number = "four";
+                            s = constructNumber(number,s);
+                            if(number.length() + s.length() == aux.length()){
+                                numbers.add(4);
+                            }
+                            break;
                         }
-                        System.out.println(s);
-                        break;
-                    }
-                    case 's':{
-                        number = "seven";
-                        s = constructNumber(number,s);
-                        if(number.length() + s.length() == aux.length()){
-                            numbers.add(7);
+                        case 's':{
+                            number = "seven";
+                            s = constructNumber(number,s);
+                            if(number.length() + s.length() == aux.length()){
+                                numbers.add(7);
+                            }
+                            break;
                         }
-                        System.out.println(s);
-                        break;
-                    }
-                    case 't':{
-                        number = "three";
-                        s = constructNumber(number,s);
-                        if(number.length() + s.length() == aux.length()){
-                            numbers.add(3);
+                        case 't':{
+                            number = "three";
+                            s = constructNumber(number,s);
+                            if(number.length() + s.length() == aux.length()){
+                                numbers.add(3);
+                            }
+                            break;
                         }
-                        System.out.println(s);
-                        break;
-                    }
-                    case 'g':{
-                        number = "eight";
-                        s = constructNumber(number,s);
-                        if(number.length() + s.length() == aux.length()){
-                            numbers.add(8);
+                        case 'g':{
+                            number = "eight";
+                            s = constructNumber(number,s);
+                            if(number.length() + s.length() == aux.length()){
+                                numbers.add(8);
+                            }
+                            break;
                         }
-                        System.out.println(s);
-                        break;
-                    }
-                    case 'o':{
-                        number = "one";
-                        s = constructNumber(number,s);
-                        if(number.length() + s.length() == aux.length()){
-                            numbers.add(1);
+                        case 'o':{
+                            number = "one";
+                            s = constructNumber(number,s);
+                            if(number.length() + s.length() == aux.length()){
+                                numbers.add(1);
+                            }
+                            break;
                         }
-                        System.out.println(s);
-                        break;
-                    }
-                    default:{
-                        number = "nine";
-                        s = constructNumber(number,s);
-                        if(number.length() + s.length() == aux.length()){
-                            numbers.add(9);
+                        default:{
+                            number = "nine";
+                            s = constructNumber(number,s);
+                            if(number.length() + s.length() == aux.length()){
+                                numbers.add(9);
+                            }
+                            break;
                         }
-                        System.out.println(s);
-                        break;
                     }
                 }
+                
             }
-            
+
         }
 
         Collections.sort(numbers);
-
+        System.out.println("s = "+s);
         for(int i=0;i<numbers.size();i++){
             result += numbers.get(i);
         }
-        System.out.println(result);
 
         return result;
     }
